@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>School Registration Form</title>
+
+    <script>
+        function validateForm() {
+
+            var name = document.forms["regForm"]["student_name"].value;
+            var email = document.forms["regForm"]["email"].value;
+            var phone = document.forms["regForm"]["phone"].value;
+            var password = document.forms["regForm"]["password"].value;
+            var confirmPassword = document.forms["regForm"]["confirm_password"].value;
+            var gender = document.forms["regForm"]["gender"].value;
+            var studentClass = document.forms["regForm"]["class"].value;
+
+            // Name Validation
+            var namePattern = /^[A-Za-z ]{3,}$/;
+            if (!namePattern.test(name)) {
+                alert("Name must contain only letters and minimum 3 characters.");
+                return false;
+            }
+
+            // Email Validation
+            var emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+            if (!emailPattern.test(email)) {
+                alert("Please enter a valid email address.");
+                return false;
+            }
+
+            // Phone Validation
+            var phonePattern = /^[0-9]{10}$/;
+            if (!phonePattern.test(phone)) {
+                alert("Phone number must be exactly 10 digits.");
+                return false;
+            }
+
+            // Password Validation
+            if (password.length < 6) {
+                alert("Password must be at least 6 characters long.");
+                return false;
+            }
+
+            // Confirm Password Validation
+            if (password !== confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+
+            // Gender Validation
+            if (gender == "") {
+                alert("Please select your gender.");
+                return false;
+            }
+
+            // Class Validation
+            if (studentClass == "") {
+                alert("Please select a class.");
+                return false;
+            }
+
+            alert("Registration Successful!");
+            return true;
+        }
+    </script>
+
+</head>
+<body>
+
+    <h2>School Management System - Registration Form</h2>
+
+    <form name="regForm" onsubmit="return validateForm()">
+
+        Student Name:<br>
+        <input type="text" name="student_name"><br><br>
+
+        Email:<br>
+        <input type="text" name="email"><br><br>
+
+        Phone Number:<br>
+        <input type="text" name="phone"><br><br>
+
+        Password:<br>
+        <input type="password" name="password"><br><br>
+
+        Confirm Password:<br>
+        <input type="password" name="confirm_password"><br><br>
+
+        Gender:<br>
+        <input type="radio" name="gender" value="Male"> Male
+        <input type="radio" name="gender" value="Female"> Female<br><br>
+
+        Class:<br>
+        <select name="class">
+            <option value="">--Select Class--</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select><br><br>
+
+        <input type="submit" value="Register">
+        <input type="reset" value="Reset">
+
+    </form>
+
+</body>
+</html>
